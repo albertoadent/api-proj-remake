@@ -167,9 +167,7 @@ const validations = (options) => {
       ?.notEmpty()
       .withMessage("Description is required"),
     startDate: genCheck("startDate", options)
-      ?.isDate()
-      .withMessage("Start date must be a valid datetime")
-      .custom(isAfterDate())
+      ?.custom(isAfterDate())
       .withMessage("Start date must be in the future"),
     endDate: genCheck("endDate", options)
       ?.custom(isAfterDate("startDate"))
