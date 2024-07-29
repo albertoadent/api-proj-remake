@@ -129,7 +129,7 @@ catchRoute(
     const users = await event.getUsers({
       through: {
         model: Attendance,
-        where: { status: { [Sequelize.Op.in]: ["co-host", "member"] } },
+        where: { status: { [Sequelize.Op.in]: ["co-host", "attending"] } },
       },
       attributes: ["id", "firstName", "lastName"],
     });

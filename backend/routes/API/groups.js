@@ -332,9 +332,7 @@ catchRoute(
       return { message: "Successfully deleted membership from group" };
     }
 
-    return {
-      message: "Membership does not exist for this User",
-    };
+    throwError(404, "Membership does not exist for this User");
   },
   "DELETE"
 );
