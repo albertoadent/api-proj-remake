@@ -1,7 +1,7 @@
 "use strict";
 
 const options = {
-  schema: process.env.NODE_ENV === "production" ? process.env : undefined,
+  schema: process.env.NODE_ENV === "production" ? process.env.SCHEMA : undefined,
 };
 
 /** @type {import('sequelize-cli').Migration} */
