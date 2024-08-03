@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
       numMembers: {
         type: DataTypes.VIRTUAL,
         get() {
-          return this.getDataValue("numMembers");
+          return this.getDataValue("numMembers") + 1;
         },
       },
       previewImage: {

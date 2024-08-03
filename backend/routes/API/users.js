@@ -62,6 +62,21 @@ router.post("/", validateSignup, async (req, res, next) => {
   }
 });
 
+router.use("/", (err, req, res, next) => {
+  // console.log(err);
+  const error = { message: "User already exists", errors: {} };
+  if (req.url !== "/") return next(err);
+  if(!Array.isArray(err)) return next(err)
+  const {errors:[...errors]} = err;
+  errors.forEach((e) => {
+    if (e.path === "email")
+      error.errors.email = "User with that email already exists";
+    if (e.path === "username")
+      error.errors.username = "User with that username already exists";
+  });
+  return res.status(500).json(error);
+});
+
 router.get("/all", async (req, res) => {
   let allUsers = await User.findAll();
   return res.json(allUsers);

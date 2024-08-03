@@ -15,8 +15,9 @@ const {
   Sequelize,
 } = route;
 
-get("/", () => {
-  return { Groups: Group.findAll() };
+get("/", async () => {
+  const Groups = await Group.findAll();
+  return { Groups };
 });
 
 get("/current", ["requireAuth"], async ({ user }) => {
